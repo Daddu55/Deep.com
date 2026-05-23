@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naam Jap Counter</title>
+    <title>Naam Jap Counter - Deepratan Tiwari</title>
     <style>
         /* Peaceful Spiritual Theme Styling */
         body {
@@ -16,7 +16,15 @@
             flex-direction: column;
             min-height: 100vh;
             align-items: center;
+            justify-content: space-between;
+        }
+        .main-wrapper {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            width: 100%;
+            padding: 20px 0;
         }
         .card {
             background: white;
@@ -149,42 +157,59 @@
             color: #431407;
             padding: 4px 0;
         }
+        /* Footer Styling */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 15px 0;
+            background-color: #431407;
+            color: #ffedd5;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
     </style>
 </head>
 <body>
 
-    <div id="selectionScreen" class="card">
-        <h1>Naam Jap Counter</h1>
-        <p>Kripya naam chuniye jiska aap jap karna chahte hain:</p>
-        <div class="selection-box">
-            <button onclick="startJap('Shri Ram')" class="btn-select">🏹 Shri Ram</button>
-            <button onclick="startJap('Shri Radha')" class="btn-select">🪕 Shri Radha</button>
-        </div>
-        
-        <div class="stats-box" style="margin-top: 35px;">
-            <div class="stats-title">Aapka Kul Kul Jap (Saved)</div>
-            <div class="stats-row"><span>Total Ram Jap:</span> <span id="homeRamCount" style="font-weight:bold;">0</span></div>
-            <div class="stats-row"><span>Total Radha Jap:</span> <span id="homeRadhaCount" style="font-weight:bold;">0</span></div>
-        </div>
-    </div>
-
-    <div id="counterScreen" class="card" style="display: none;">
-        <button onclick="goBack()" class="btn-corner-left">← Change</button>
-        <button onclick="resetCurrentCounter()" class="btn-corner-right">Reset 🔄</button>
-        
-        <div style="margin-top: 20px;">
-            <div id="selectedNaamDisplay" class="selected-title">Naam</div>
-            <div class="count-display" id="mainCounter">0</div>
+    <div class="main-wrapper">
+        <div id="selectionScreen" class="card">
+            <h1>नाम जप काउंटर</h1>
+            <p>कृपया नाम चुनिए जिसका आप जप करना चाहते हैं:</p>
+            <div class="selection-box">
+                <button onclick="startJap('Shri Ram')" class="btn-select">🏹 श्री राम</button>
+                <button onclick="startJap('Shri Radha')" class="btn-select">🪕 श्री राधा</button>
+            </div>
             
-            <button onclick="incrementCounter()" class="btn-jap" id="japActionBtn">JAP</button>
+            <div class="stats-box" style="margin-top: 35px;">
+                <div class="stats-title">आपका कुल जाप (सुरक्षित डेटा)</div>
+                <div class="stats-row"><span>कुल राम जप:</span> <span id="homeRamCount" style="font-weight:bold;">0</span></div>
+                <div class="stats-row"><span>कुल राधा जप:</span> <span id="homeRadhaCount" style="font-weight:bold;">0</span></div>
+            </div>
         </div>
 
-        <div class="stats-box">
-            <div class="stats-title">Live Saving Dashboard</div>
-            <div class="stats-row"><span id="lblRam">Total Ram Jap:</span> <span id="statRamCount" style="font-weight:bold;">0</span></div>
-            <div class="stats-row"><span id="lblRadha">Total Radha Jap:</span> <span id="statRadhaCount" style="font-weight:bold;">0</span></div>
+        <div id="counterScreen" class="card" style="display: none;">
+            <button onclick="goBack()" class="btn-corner-left">← नाम बदलें</button>
+            <button onclick="resetCurrentCounter()" class="btn-corner-right">रिसेट 🔄</button>
+            
+            <div style="margin-top: 20px;">
+                <div id="selectedNaamDisplay" class="selected-title">नाम</div>
+                <div class="count-display" id="mainCounter">0</div>
+                
+                <button onclick="incrementCounter()" class="btn-jap" id="japActionBtn">जप करें</button>
+            </div>
+
+            <div class="stats-box">
+                <div class="stats-title">लाइव सेविंग डैशबोर्ड</div>
+                <div class="stats-row"><span id="lblRam">कुल राम जप:</span> <span id="statRamCount" style="font-weight:bold;">0</span></div>
+                <div class="stats-row"><span id="lblRadha">कुल राधा जप:</span> <span id="statRadhaCount" style="font-weight:bold;">0</span></div>
+            </div>
         </div>
     </div>
+
+    <footer>
+        Made with ♥️ by Deepratan Tiwari
+    </footer>
 
     <script>
         // Core state tracker
@@ -204,9 +229,14 @@
             document.getElementById("selectionScreen").style.display = "none";
             document.getElementById("counterScreen").style.display = "block";
             
-            // Set contextual labels
-            document.getElementById("selectedNaamDisplay").innerText = naam;
-            document.getElementById("japActionBtn").innerText = naam === "Shri Ram" ? "RAM" : "RADHA";
+            // Set contextual labels in Hindi/Universal format
+            if(naam === "Shri Ram") {
+                document.getElementById("selectedNaamDisplay").innerText = "श्री राम";
+                document.getElementById("japActionBtn").innerText = "राम";
+            } else {
+                document.getElementById("selectedNaamDisplay").innerText = "श्री राधा";
+                document.getElementById("japActionBtn").innerText = "राधा";
+            }
             
             // Set current session view counter
             updateCounterDisplay();
@@ -236,8 +266,9 @@
         }
 
         function resetCurrentCounter() {
+            let translationNaam = activeNaam === "Shri Ram" ? "श्री राम" : "श्री राधा";
             // Confirmation alert before clearing data
-            let confirmClear = confirm("Kya aap " + activeNaam + " ka counter zero (0) karna chahte hain?");
+            let confirmClear = confirm("क्या आप " + translationNaam + " का काउंटर वापस जीरो (0) करना चाहते हैं?");
             if (confirmClear) {
                 if (activeNaam === "Shri Ram") {
                     ramTotalData = 0;
