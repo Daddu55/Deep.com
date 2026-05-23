@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep's Library - Class 11th Complete Portal</title>
+    <title>Deep's Library - Class 11th Portal</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
         .custom-scrollbar::-webkit-scrollbar {
@@ -22,7 +22,7 @@
             <h1 class="text-2xl font-bold tracking-wide">
                 📚 DEEP'S LIBRARY <span class="text-indigo-400 text-sm font-medium tracking-normal border-l border-indigo-700 pl-3">Class 11th Hub</span>
             </h1>
-            <p class="text-indigo-200 text-xs italic hidden sm:block">Complete NCERT Master Syllabus Dashboard</p>
+            <p class="text-indigo-200 text-xs italic hidden sm:block">NCERT Dynamic Syllabus Dashboard</p>
         </div>
     </header>
 
@@ -30,38 +30,38 @@
         <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-slate-800">Select a Subject</h2>
-                <p class="text-slate-400 text-sm mt-1">Click on any subject to explore its full NCERT textbook chapters</p>
+                <p class="text-slate-400 text-sm mt-1">Click on any subject to explore its NCERT syllabus chapters</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button onclick="openSubjectPage('Zoology')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🦁</span>
                     <h3 class="font-bold text-lg mt-2">Zoology</h3>
-                    <p class="text-xs text-slate-400 mt-1">Animal Diversity, Structural Organisation & Human Physiology</p>
+                    <p class="text-xs text-slate-400 mt-1">Animal Diversity & Human Physiology</p>
                 </button>
 
                 <button onclick="openSubjectPage('Botany')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🌿</span>
                     <h3 class="font-bold text-lg mt-2">Botany</h3>
-                    <p class="text-xs text-slate-400 mt-1">Plant Kingdom, Anatomy, Cell Biology & Plant Physiology</p>
+                    <p class="text-xs text-slate-400 mt-1">Plant Morphology & Cell Biology</p>
                 </button>
 
                 <button onclick="openSubjectPage('Chemistry')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🧪</span>
                     <h3 class="font-bold text-lg mt-2">Chemistry</h3>
-                    <p class="text-xs text-slate-400 mt-1">Physical, Inorganic & Organic Chemistry Foundations</p>
+                    <p class="text-xs text-slate-400 mt-1">Organic, Inorganic & Physical Theories</p>
                 </button>
 
                 <button onclick="openSubjectPage('Physics')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🌌</span>
                     <h3 class="font-bold text-lg mt-2">Physics</h3>
-                    <p class="text-xs text-slate-400 mt-1">Mechanics, Gravitation, Matter Properties & Thermodynamics</p>
+                    <p class="text-xs text-slate-400 mt-1">Kinematics, Mechanics & Thermodynamics</p>
                 </button>
 
                 <button onclick="openSubjectPage('Maths')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full md:col-span-2 flex items-center justify-between">
                     <div>
                         <h3 class="font-bold text-lg">📐 Mathematics</h3>
-                        <p class="text-xs text-slate-400 mt-1">Sets, Algebra, Coordinate Geometry, Calculus & Statistics</p>
+                        <p class="text-xs text-slate-400 mt-1">Calculus, Algebra & Sets Theory</p>
                     </div>
                     <span class="text-xl">→</span>
                 </button>
@@ -80,13 +80,13 @@
                     </button>
                 </div>
                 <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">NCERT Chapter Index</p>
-                <div id="chapterContainerList" class="space-y-2 max-h-[500px] overflow-y-auto custom-scrollbar pr-1">
+                <div id="chapterContainerList" class="space-y-2 max-h-[400px] overflow-y-auto custom-scrollbar pr-1">
                     </div>
             </div>
         </section>
 
         <section class="lg:col-span-8">
-            <div id="summaryCard" class="bg-white h-full min-h-[580px] p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-center items-center text-center">
+            <div id="summaryCard" class="bg-white h-full min-h-[500px] p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-center items-center text-center">
                 
                 <div id="placeholderState" class="space-y-3">
                     <p class="text-5xl">📑</p>
@@ -117,42 +117,95 @@
     <script>
         const class11SyllabusDB = {
             "Zoology": {
-                "Chapter 4: Animal Kingdom": "This comprehensive zoology module classifies the animal kingdom based on evolutionary features, architectural symmetry, coelom configurations, and tissue-level organization parameters.\n\nIt outlines the profound evolutionary shift from completely unorganized multicellular forms to advanced organisms containing interdependent systems.\n\nStudents systematically study eleven distinct phyla, moving carefully from primitive Porifera, Coelenterata, and Platyhematises up through highly organized Annelida, Mollusca, and Arthropoda.\n\nKey evolutionary milestones, such as open versus completely closed cardiovascular systems, true segmentations, and coelomic cavities, are mapped safely.",
-                "Chapter 7: Structural Organisation in Animals": "This specialized cytological and anatomical chapter reviews complex animal tissues, looking closely at their layouts, micro-structures, and physiological roles.\n\nIt isolates the four fundamental structural tissue classifications: Epithelial protective sheets, specialized Connective matrices, Muscular movement units, and Neural information networks.\n\nEpithelial structures are classified by their layer styles, while connective matrices are evaluated for their critical structural roles in keeping bodily systems together.",
-                "Chapter 17: Breathing and Exchange of Gases": "This chapter covers the respiratory structures across diverse biological groups, detailing the specialized mechanics of pulmonary respiration in humans.\n\nIt explains the clear gradients that facilitate oxygen and carbon dioxide transport through alveoli and vascular networks.\n\nStudents explore standard regulatory neural mechanics alongside clinically relevant respiratory conditions like asthma and emphysema.",
-                "Chapter 18: Body Fluids and Circulation": "This core curriculum unit focuses on cardiovascular systems, mapping out blood elements, plasma fluids, lymph structures, and the complete mechanics of the human heart.\n\nIt details complex cardiac cycle sequences, electrocardiogram signals, double circulation routing systems, and systemic regulatory mechanisms.\n\nPathological conditions, including hypertension, angina pectoris, and coronary artery diseases, are thoroughly addressed.",
-                "Chapter 19: Excretory Products and their Elimination": "This chapter evaluates renal systems, detailing human nephron layouts, counter-current concentration multipliers, and homeostatic fluid balances.\n\nIt details the production lines of urea, mechanisms of glomerular filtration, absolute tubular reabsorption, and active systemic excretion dynamics.\n\nClinical implications like dialysis engineering, renal calculi, and standard uremia are comprehensively outlined.",
-                "Chapter 20: Locomotion and Movement": "This analytical section explains mechanical skeletal muscle operations alongside the comprehensive structural anatomy of human bones and skeletal alignments.\n\nIt explains the sliding filament theory of muscle contraction, detailing myosin-actin interactions powered by ATP hydrolysis cycles.\n\nCommon locomotor system disorders like arthritis, osteoporosis, and myasthenia gravis are thoroughly cataloged.",
-                "Chapter 21: Neural Control and Coordination": "This module reviews neurological frameworks, detailing central nervous configurations, reflex arcs, neural impulse creation, and synaptic transmission bridges.\n\nIt explores the detailed operations of specialized sensory tracking organs, focusing on deep structural maps of the human eye and auditory inner ear models.\n\nMechanisms of polarization, depolarization, and absolute saltatory nerve conduction are mathematically and biologically detailed.",
-                "Chapter 22: Chemical Coordination and Integration": "This final zoology unit evaluates endocrine systems, detailing hormone production hubs, target feedback signaling loops, and metabolic control paths.\n\nIt maps out pituitary, thyroid, adrenal, pancreatic, and gonadal hormone outputs, highlighting how biochemical signaling acts as an overlay to fast neural networks.\n\nHormonal malfunctions leading to diabetes, gigantism, or goiter are professionally organized for exam preparation."
+                "Chapter 4: Animal Kingdom": "This comprehensive zoology module classifies the animal kingdom based on evolutionary features, architectural symmetry, coelom configurations, and tissue-level organization parameters.\n\nIt outlines the profound evolutionary shift from completely unorganized multicellular forms to advanced organisms containing interdependent systems.\n\nStudents systematically study eleven distinct phyla, moving carefully from primitive Porifera, Coelenterata, and Platyhelminthes up through highly organized Annelida, Mollusca, and Arthropoda.\n\nKey evolutionary milestones, such as open versus completely closed cardiovascular systems, true segmentations, and coelomic cavities, are mapped.\n\nThe final sections detail Chordates, analyzing specific adaptive changes from primitive jawless fish up to highly complex mammalian models.",
+                "Chapter 7: Structural Organisation in Animals": "This specialized cytological and anatomical chapter reviews complex animal tissues, looking closely at their layouts, micro-structures, and physiological roles.\n\nIt isolates the four fundamental structural tissue classifications: Epithelial protective sheets, specialized Connective matrices, Muscular movement units, and Neural information networks.\n\nEpithelial structures are classified by their layer styles, while connective matrices are evaluated for their critical structural roles in keeping bodily systems together.\n\nThe text looks at muscular tissues, discussing skeletal, smooth, and cardiac configurations to show how they control voluntary and involuntary movements."
             },
             "Botany": {
-                "Chapter 1: The Living World": "This introductory module defines the unique architectural parameters of life, detailing biodiversity matrices and systematic taxonomic hierarchies.\n\nIt outlines rules of binomial nomenclature and introduces operational tools like herbaria, botanical gardens, and structural taxonomic keys.",
-                "Chapter 2: Biological Classification": "This systematic chapter details Whittaker’s Five-Kingdom arrangement layout, analyzing Monera, Protista, Fungi, Plantae, and Animalia structures.\n\nIt reviews primitive life strategies, standard viral tracking rules, prions, and economic and ecological value maps.",
-                "Chapter 3: Plant Kingdom": "This foundational botany module covers plant classification, tracking the evolutionary steps from simple algae to complex flowering plants.\n\nIt organizes the plant world into five main groups: Algae, Bryophytes, Pteridophytes, Gymnosperms, and Angiosperms, detailing life cycles and alternation of generations.",
-                "Chapter 5: Morphology of Flowering Plants": "This dynamic structural chapter analyzes external variations across roots, shoots, leaves, compound flowers, seed fruits, and baseline vegetative matrices.\n\nIt breaks down families like Solanaceae and Fabaceae using formal floral formulas and diagnostic symmetry diagrams.",
-                "Chapter 6: Anatomy of Flowering Plants": "This internal structural unit analyzes plant histology, separating primary meristems from permanent specialized protective and vascular tissue groupings.\n\nIt contrasts internal dicot and monocot arrangements across roots, stems, and leaves while outlining secondary thickening steps.",
-                "Chapter 8: Cell: The Unit of Life": "This cell biology module evaluates prokaryotic and eukaryotic structures, detailing cell walls, plasma interfaces, and specialized internal organelle hubs.\n\nIt details endomembrane systems, mitochondrial energy engines, chloroplast complexes, and the critical structural data inside nuclear centers.",
-                "Chapter 9: Biomolecules": "This biochemical chapter analyzes essential components like carbohydrates, lipophilic structures, structural proteins, and complex nucleic acid polymers.\n\nIt details catalytic enzyme profiles, metabolic path loops, factors influencing substrate speed, and structural competitive inhibition profiles.",
-                "Chapter 10: Cell Cycle and Cell Division": "This vital biological module looks closely at cell replication, tracking the preparatory Interphase and the dynamic mitotic and meiotic distribution paths.\n\nIt focuses on meiotic chromosomal cross-over steps that introduce variations driving global evolutionary developments.",
-                "Chapter 13: Photosynthesis in Higher Plants": "This bioenergetic framework investigates light-harvesting pigment structures, cyclic photophosphorylation, and carbon tracking systems.\n\nIt explores the differences between $C_3$ and $C_4$ metabolic processing setups, alongside factors governing overall output yields.",
-                "Chapter 14: Respiration in Plants": "This cellular metabolism chapter tracks the breakdown of sugar elements across Glycolysis, aerobic Krebs cycles, and electron transport setups.\n\nIt details net ATP outputs, the operational logistics of oxidative phosphorylation, and overall respiratory quotient ($RQ$) values.",
-                "Chapter 15: Plant Growth and Development": "This final botany curriculum unit outlines kinetic growth curves, photoperiodic transformations, vernalization processing, and plant growth regulators.\n\nIt explores the definitive physiological balancing roles of auxins, gibberellins, cytokinins, ethylene gases, and abscisic acids."
+                "Chapter 3: Plant Kingdom": "This foundational botany module covers plant classification, tracking the evolutionary steps from simple algae to complex flowering plants.\n\nIt organizes the plant world into five main groups: Algae, Bryophytes, Pteridophytes, Gymsomperms, and Angiosperms, detailing their structural styles.\n\nEach major division is thoroughly examined regarding its lifecycle paths, unique reproductive structures, specific habitats, and direct values to human systems.\n\nThe text traces the structural evolution from water-dependent bryophytes to vascular pteridophytes and advanced seed-producing gymnosperms.",
+                "Chapter 10: Cell Cycle and Cell Division": "This vital biological module looks closely at cell replication, tracking the precise chemical steps cells use to grow and divide safely.\n\nIt maps out the complete lifecycle of a cell, split into the long preparatory Interphase (G1, S, and G2 stages) and the active M-Phase distribution.\n\nMitosis is studied as equational division, detailing how Prophase, Metaphase, Anaphase, and Telophase safely separate chromosomes to help organisms grow and repair tissues.\n\nMeiosis is presented as reductional division, explaining how it cuts chromosome numbers in half to produce haploid gametes for sexual reproduction."
             },
             "Chemistry": {
-                "Chapter 1: Some Basic Concepts of Chemistry": "This introductory chapter sets the mathematical rules for chemical testing, tracking units, significant numbers, and compound combinations.\n\nIt isolates the Mole concept, chemical empirical tracking, limiting reactants, and volumetric metrics like Molarity and Molality.",
-                "Chapter 2: Structure of Atom": "This structural chemistry chapter traces atomic evolutions, detailing electronic setups, Bohr patterns, quantum numbers, and electron clouds.\n\nIt details principles such as Heisenberg's uncertainty, de Broglie relationships, the Aufbau model, and Hund's empirical rule structures.",
-                "Chapter 3: Classification of Elements and Periodicity": "This module reviews modern periodic formatting configurations, shielding effects, and structural trends across physical and chemical behaviors.\n\nIt charts predictable properties like atomic radii shifts, ionization potentials, electron affinities, and electronegativity gradients.",
-                "Chapter 4: Chemical Bonding and Molecular Structure": "This critical theoretical chapter evaluates chemical tracking models, Lewis layouts, VSEPR shapes, hybridization styles, and molecular orbital paths.\n\nIt delivers tools to evaluate bond geometry, dipole interactions, and complex multi-center quantum electron structures.",
-                "Chapter 6: Chemical Thermodynamics": "This energetic layout maps system variations, separating isolated controls from enthalpy, entropy, internal energy transformations, and free energy variations.\n\nIt details the First and Second Laws of Thermodynamics, Hess’s law constants, and predictable spontaneity conditions based on Gibbs equations.",
-                "Chapter 7: Equilibrium": "This dynamic chemistry module treats reversible operational states, detailing homogeneous balance balances, Le Chatelier principles, and ionic separations.\n\nIt focuses on acid-base tracking, pH calculations, common-ion influences, buffer operations, and solubility product limits.",
-                "Chapter 8: Redox Reactions": "This fundamental electrochemistry chapter tracks oxidation numbers, electronic balances, reduction trends, and electrochemical voltaic cell configurations.\n\nIt outlines fractional oxidation processing and matching structural half-reaction equations for laboratory execution models.",
-                "Chapter 12: Organic Chemistry - Some Basic Principles and Techniques": "This fundamental organic framework introduces IUPAC structural labeling rules, isomer processing, inductive electronic shifts, resonance, and hyperconjugation.\n\nIt classifies nucleophiles and electrophiles while analyzing standard laboratory purifications and raw qualitative analysis profiles.",
-                "Chapter 13: Hydrocarbons": "This exhaustive organic tracking chapter outlines preparation pathways and chemical actions for Alkanes, Alkenes, Alkynes, and Aromatic rings.\n\nIt details free-radical substitutions, electrophilic additions, Markovnikov orientations, and Huckel's rules for aromaticity structural states."
+                "Chapter 1: Some Basic Concepts of Chemistry": "This essential structural chemistry chapter sets the fundamental mathematical rules used to process quantitative modern chemical research.\n\nIt reviews international tracking units, precision rules in lab measurements, scientific shorthand, and the foundational laws of chemical combinations.\n\nThe concept of the Mole is central to this text, defining Avogadro’s constant to bridge microscopic chemical properties with macroscopic weights.\n\nStudents learn analytical methods to calculate empirical and molecular formulas using raw percentage composition datasets from compounds.",
+                "Chapter 2: Structure of Atom": "This structural chemistry chapter tracks the historical scientific steps that led to our modern understanding of atomic layouts.\n\nIt starts with the discovery of subatomic items—electrons, protons, and neutrons—and analyzes why early models by Thomson and Rutherford fell short.\n\nIt introduces wave-particle dualities and Planck’s Quantum Theory to explain why energy acts in specific packets at small scales.\n\nBohr’s Hydrogen Model is evaluated, showing how locked electron tracks create clean emission line patterns when viewed through a spectroscope."
             },
             "Physics": {
-                "Chapter 2: Units and Measurements": "This universal baseline physics module charts standard measurement formats, systematic testing errors, significant figures, and dimensional consistency checks.\n\nIt explains dimensional analysis tools used to test formulas, derive physics laws, and convert data scales across technical domains.",
-                "Chapter 3: Motion in a Straight Line": "This foundational kinematics module tracks linear motion variables, instantaneous vectors, and graphical representations ($x-t$, $v-t$).\n\nIt derives standard equations of motion using calculus frameworks and applies them to free-fall calculations under gravitational fields.",
-                "Chapter 4: Motion in a Plane": "This scalar and vector module evaluates multi-dimensional motion paths, looking at uniform relative velocity alignments and projectile trajectories.\n\nIt explores circular acceleration dynamics, centripetal force allocations, and parametric angular velocities across mathematical plane surfaces.",
-                "Chapter 5: Laws of Motion": "This core classical mechanics module details Newton’s three laws of inertia, momentum conservation, and complex friction mechanics.\n\nIt delivers architectural methods to resolve complex free-body vector setups across flat planes and banked highway engineering curves.",
-                "Chapter 6: Work, Energy and Power": "This system checks energy actions, scalar work paths, variable forces, kinetic potent
+                "Chapter 2: Units and Measurements": "This introductory physics model details the international reference standards used to track physical properties accurately across modern science.\n\nIt separates baseline independent measurements (like mass, length, and time) from complex derived units used for values like force, power, or velocity.\n\nThe text looks at experimental accuracy and precision, explaining how systematic and random errors affect real-world measurement systems.\n\nSignificant figures are taught systematically to ensure that calculations preserve the true physical limits of testing equipment.",
+                "Chapter 3: Motion in a Straight Line": "This core kinematics module evaluates the straight-line movement of items without focusing on the physical forces that cause the action.\n\nIt defines essential coordinate terms: position shifts, total displacement vectors, overall path lengths, baseline velocity, and instantaneous acceleration.\n\nStudents use graphical systems, analyzing position-time ($x-t$) and velocity-time ($v-t$) charts to visualize changes in object speeds.\n\nIt derives the three classic kinematic equations of motion: $v = u + at$, $s = ut + \frac{1}{2}at^2$, and $v^2 = u^2 + 2as$ via calculus foundations."
+            },
+            "Maths": {
+                "Chapter 1: Sets": "This foundational math module introduces Set Theory, providing the universal logical language used across modern mathematical structures.\n\nA set is defined as a clearly organized group of unique objects, represented using either clear Roster list layouts or Set-Builder logic rules.\n\nIt covers different set styles, including empty groups, finite matrices, infinite values, equivalent equations, subsets, and universal data pools.\n\nStudents learn the four major operations: Universal Unions, tight Intersections, structural Differences, and the absolute Complement of a set.",
+                "Chapter 2: Relations and Functions": "Building directly on Set Theory, this module explores how specific mathematical items couple together using ordered pairs.\n\nIt starts with the Cartesian Product of two sets, defining a true Relation as any mathematical subset built from that product.\n\nStudents learn to calculate the Domain input sets, Co-domain targets, and real Range outputs that define any relation's limits.\n\nA Function is introduced as a specialized system where every single input maps to exactly one unique, distinct output value."
+            }
+        };
+
+        let selectedSubjectName = "";
+
+        function openSubjectPage(subjectName) {
+            selectedSubjectName = subjectName;
+
+            // Strict Native Style display switching (100% reliable)
+            document.getElementById("subjectsPage").style.display = "none";
+            document.getElementById("chaptersPage").style.display = "grid";
+
+            document.getElementById("currentSubjectTitle").innerText = subjectName;
+            resetRightSummaryPanel();
+
+            const chapterContainerList = document.getElementById("chapterContainerList");
+            chapterContainerList.innerHTML = ""; 
+
+            const availableChapters = class11SyllabusDB[subjectName];
+            
+            // Loop and generate chapter elements cleanly
+            for (let chapTitle in availableChapters) {
+                const buttonItem = document.createElement("button");
+                buttonItem.type = "button";
+                buttonItem.className = "chap-list-btn w-full text-left bg-slate-50 hover:bg-slate-100 text-slate-700 text-sm font-medium p-3 rounded-xl border border-slate-200 block truncate cursor-pointer";
+                buttonItem.innerText = chapTitle;
+                
+                // Static listener generation to prevent memory loss loops
+                buttonItem.onclick = function() {
+                    showDocumentSummary(chapTitle, buttonItem);
+                };
+                
+                chapterContainerList.appendChild(buttonItem);
+            }
+        }
+
+        function showDocumentSummary(chapterTitle, domElement) {
+            // Un-highlight previous choices
+            const buttons = document.querySelectorAll('.chap-list-btn');
+            for(let i=0; i<buttons.length; i++) {
+                buttons[i].style.borderColor = "#e2e8f0";
+                buttons[i].style.backgroundColor = "#f8fafc";
+                buttons[i].style.color = "#334155";
+            }
+
+            // Inline color push to make sure it responds instantly
+            domElement.style.borderColor = "#4f46e5";
+            domElement.style.backgroundColor = "#f5f3ff";
+            domElement.style.color = "#4338ca";
+
+            document.getElementById("placeholderState").style.display = "none";
+            document.getElementById("contentState").style.display = "block";
+            document.getElementById("summaryCard").className = "bg-white h-full min-h-[500px] p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col";
+
+            document.getElementById("breadcrumbText").innerText = `Class 11th > ${selectedSubjectName}`;
+            document.getElementById("summaryTitle").innerText = chapterTitle;
+
+            const functionalDataText = class11SyllabusDB[selectedSubjectName][chapterTitle];
+            document.getElementById("summaryText").innerHTML = functionalDataText.split('\n\n').map(p => `<p class="text-justify leading-relaxed">${p}</p>`).join('');
+        }
+
+        function goBackToSubjects() {
+            document.getElementById("chaptersPage").style.display = "none";
+            document.getElementById("subjectsPage").style.display = "block";
+        }
+
+        function resetRightSummaryPanel() {
+            document.getElementById("placeholderState").style.display = "block";
+            document.getElementById("contentState").style.display = "none";
+            document.getElementById("summaryCard").className = "bg-white h-full min-h-[500px] p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-center items-center text-center";
+        }
+    </script>
+</body>
+</html>
