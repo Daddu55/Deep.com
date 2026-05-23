@@ -3,65 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep's Library - Class 11th Portal</title>
+    <title>Deep's Library - Class 11th Dashboard</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 3px;
-        }
-    </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
 
     <header class="bg-indigo-950 text-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-wide">
-                📚 DEEP'S LIBRARY <span class="text-indigo-400 text-sm font-medium tracking-normal border-l border-indigo-700 pl-3">Class 11th Hub</span>
-            </h1>
-            <p class="text-indigo-200 text-xs italic hidden sm:block">NCERT Dynamic Syllabus Dashboard</p>
+            <h1 class="text-2xl font-bold tracking-wide">📚 DEEP'S LIBRARY</h1>
+            <p class="text-indigo-200 text-xs italic">Class 11th NCERT Portal</p>
         </div>
     </header>
 
-    <main id="subjectsPage" class="max-w-3xl w-full mx-auto px-4 py-12 flex-grow flex flex-col justify-center">
+    <main id="subjectsMenu" class="max-w-3xl w-full mx-auto px-4 py-12 flex-grow flex flex-col justify-center">
         <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 space-y-6">
             <div class="text-center">
                 <h2 class="text-2xl font-bold text-slate-800">Select a Subject</h2>
-                <p class="text-slate-400 text-sm mt-1">Click on any subject to explore its NCERT syllabus chapters</p>
+                <p class="text-slate-400 text-sm mt-1">Click on any subject to open its static chapter panel</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button onclick="openSubjectPage('Zoology')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
+                <button onclick="showPanel('zoologyPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🦁</span>
                     <h3 class="font-bold text-lg mt-2">Zoology</h3>
-                    <p class="text-xs text-slate-400 mt-1">Animal Diversity & Human Physiology</p>
+                    <p class="text-xs text-slate-400 mt-1">Animal Kingdom & Human Physiology</p>
                 </button>
 
-                <button onclick="openSubjectPage('Botany')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
+                <button onclick="showPanel('botanyPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🌿</span>
                     <h3 class="font-bold text-lg mt-2">Botany</h3>
-                    <p class="text-xs text-slate-400 mt-1">Plant Morphology & Cell Biology</p>
+                    <p class="text-xs text-slate-400 mt-1">Plant Systems & Cell Biology</p>
                 </button>
 
-                <button onclick="openSubjectPage('Chemistry')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
+                <button onclick="showPanel('chemistryPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🧪</span>
                     <h3 class="font-bold text-lg mt-2">Chemistry</h3>
-                    <p class="text-xs text-slate-400 mt-1">Organic, Inorganic & Physical Theories</p>
+                    <p class="text-xs text-slate-400 mt-1">Organic, Inorganic & Physical Principles</p>
                 </button>
 
-                <button onclick="openSubjectPage('Physics')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
+                <button onclick="showPanel('physicsPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
                     <span class="text-2xl">🌌</span>
                     <h3 class="font-bold text-lg mt-2">Physics</h3>
-                    <p class="text-xs text-slate-400 mt-1">Kinematics, Mechanics & Thermodynamics</p>
+                    <p class="text-xs text-slate-400 mt-1">Mechanics, Matter & Thermodynamics</p>
                 </button>
 
-                <button onclick="openSubjectPage('Maths')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full md:col-span-2 flex items-center justify-between">
+                <button onclick="showPanel('mathsPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full md:col-span-2 flex items-center justify-between">
                     <div>
                         <h3 class="font-bold text-lg">📐 Mathematics</h3>
-                        <p class="text-xs text-slate-400 mt-1">Calculus, Algebra & Sets Theory</p>
+                        <p class="text-xs text-slate-400 mt-1">Calculus, Algebra & Geometry</p>
                     </div>
                     <span class="text-xl">→</span>
                 </button>
@@ -69,143 +58,97 @@
         </div>
     </main>
 
-    <main id="chaptersPage" style="display: none;" class="max-w-7xl w-full mx-auto px-4 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <section class="lg:col-span-4 space-y-4">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 space-y-4">
-                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <h3 id="currentSubjectTitle" class="text-xl font-bold text-slate-800">Subject Name</h3>
-                    <button onclick="goBackToSubjects()" class="bg-slate-100 hover:bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-200 transition-all cursor-pointer">
-                        ← Back
-                    </button>
-                </div>
-                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">NCERT Chapter Index</p>
-                <div id="chapterContainerList" class="space-y-2 max-h-[400px] overflow-y-auto custom-scrollbar pr-1">
-                    </div>
+
+    <main id="zoologyPanel" style="display: none;" class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow grid grid-cols-1 md:grid-cols-12 gap-6">
+        <section class="md:col-span-4 bg-white p-5 rounded-2xl shadow border border-slate-100 h-fit space-y-3">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                <h3 class="font-bold text-xl text-indigo-900">🦁 Zoology</h3>
+                <button onclick="showMainMenu()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-lg border font-semibold">← Back</button>
+            </div>
+            <div class="space-y-1 max-h-[450px] overflow-y-auto pr-1">
+                <button onclick="viewText('zoo1', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 4: Animal Kingdom</button>
+                <button onclick="viewText('zoo2', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 7: Structural Organisation in Animals</button>
+                <button onclick="viewText('zoo3', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 17: Breathing & Exchange of Gases</button>
+                <button onclick="viewText('zoo4', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 18: Body Fluids & Circulation</button>
+                <button onclick="viewText('zoo5', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 19: Excretory Products</button>
+                <button onclick="viewText('zoo6', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 20: Locomotion & Movement</button>
+                <button onclick="viewText('zoo7', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 21: Neural Control</button>
+                <button onclick="viewText('zoo8', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 22: Chemical Coordination</button>
             </div>
         </section>
-
-        <section class="lg:col-span-8">
-            <div id="summaryCard" class="bg-white h-full min-h-[500px] p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-center items-center text-center">
-                
-                <div id="placeholderState" class="space-y-3">
-                    <p class="text-5xl">📑</p>
-                    <h3 class="text-xl font-bold text-slate-700">Select a Chapter</h3>
-                    <p class="text-slate-400 text-sm max-w-xs mx-auto">Click on any core NCERT syllabus chapter on the left panel to review its extensive academic summary.</p>
-                </div>
-
-                <div id="contentState" class="w-full text-left" style="display: none;">
-                    <div class="border-b border-slate-100 pb-4 mb-5">
-                        <span id="breadcrumbText" class="text-xs font-bold uppercase tracking-widest text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Syllabus Portal</span>
-                        <h2 id="summaryTitle" class="text-2xl font-bold text-slate-800 mt-4 tracking-tight">Chapter Header</h2>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Official Executive Summary</h4>
-                        <div id="summaryText" class="text-slate-600 leading-relaxed text-justify space-y-5 text-base font-normal">
-                            </div>
-                    </div>
-                </div>
-
-            </div>
+        <section class="md:col-span-8 bg-white p-6 rounded-2xl shadow border border-slate-100 min-h-[400px]">
+            <div id="zoo-placeholder" class="h-full flex flex-col justify-center items-center text-slate-400 py-20"><p class="text-4xl">📑</p><p class="mt-2 text-sm">Select a Zoology chapter to read summary</p></div>
+            <div id="zoo1" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Animal Kingdom</h2><p>This comprehensive zoology module classifies the animal kingdom based on evolutionary features, architectural symmetry, coelom configurations, and tissue-level organization parameters.</p><p>Students systematically study eleven distinct phyla, moving carefully from primitive Porifera up through highly organized Chordates.</p></div>
+            <div id="zoo2" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Structural Organisation</h2><p>This specialized cytological and anatomical chapter reviews complex animal tissues, looking closely at their layouts, micro-structures, and physiological roles.</p><p>It isolates the four fundamental structural tissue classifications: Epithelial protective sheets, specialized Connective matrices, Muscular movement units, and Neural networks.</p></div>
+            <div id="zoo3" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Breathing and Exchange of Gases</h2><p>This chapter covers the respiratory structures across diverse biological groups, detailing the specialized mechanics of pulmonary respiration in humans.</p></div>
+            <div id="zoo4" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Body Fluids and Circulation</h2><p>This core curriculum unit focuses on cardiovascular systems, mapping out blood elements, plasma fluids, lymph structures, and the complete mechanics of the human heart.</p></div>
+            <div id="zoo5" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Excretory Products & Elimination</h2><p>This chapter evaluates renal systems, detailing human nephron layouts, counter-current concentration multipliers, and homeostatic fluid balances.</p></div>
+            <div id="zoo6" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Locomotion and Movement</h2><p>This analytical section explains mechanical skeletal muscle operations alongside the comprehensive structural anatomy of human bones and skeletal alignments.</p></div>
+            <div id="zoo7" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Neural Control & Coordination</h2><p>This module reviews neurological frameworks, detailing central nervous configurations, reflex arcs, neural impulse creation, and synaptic transmission bridges.</p></div>
+            <div id="zoo8" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Chemical Coordination</h2><p>This final zoology unit evaluates endocrine systems, detailing hormone production hubs, target feedback signaling loops, and metabolic control paths.</p></div>
         </section>
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 text-center py-4 border-t border-slate-800 text-xs">
-        &copy; 2026 Deep's Library. Single-File Stable Routing Architecture. All Rights Reserved.
-    </footer>
 
-    <script>
-        const class11SyllabusDB = {
-            "Zoology": {
-                "Chapter 4: Animal Kingdom": "This comprehensive zoology module classifies the animal kingdom based on evolutionary features, architectural symmetry, coelom configurations, and tissue-level organization parameters.\n\nIt outlines the profound evolutionary shift from completely unorganized multicellular forms to advanced organisms containing interdependent systems.\n\nStudents systematically study eleven distinct phyla, moving carefully from primitive Porifera, Coelenterata, and Platyhelminthes up through highly organized Annelida, Mollusca, and Arthropoda.\n\nKey evolutionary milestones, such as open versus completely closed cardiovascular systems, true segmentations, and coelomic cavities, are mapped.\n\nThe final sections detail Chordates, analyzing specific adaptive changes from primitive jawless fish up to highly complex mammalian models.",
-                "Chapter 7: Structural Organisation in Animals": "This specialized cytological and anatomical chapter reviews complex animal tissues, looking closely at their layouts, micro-structures, and physiological roles.\n\nIt isolates the four fundamental structural tissue classifications: Epithelial protective sheets, specialized Connective matrices, Muscular movement units, and Neural information networks.\n\nEpithelial structures are classified by their layer styles, while connective matrices are evaluated for their critical structural roles in keeping bodily systems together.\n\nThe text looks at muscular tissues, discussing skeletal, smooth, and cardiac configurations to show how they control voluntary and involuntary movements."
-            },
-            "Botany": {
-                "Chapter 3: Plant Kingdom": "This foundational botany module covers plant classification, tracking the evolutionary steps from simple algae to complex flowering plants.\n\nIt organizes the plant world into five main groups: Algae, Bryophytes, Pteridophytes, Gymsomperms, and Angiosperms, detailing their structural styles.\n\nEach major division is thoroughly examined regarding its lifecycle paths, unique reproductive structures, specific habitats, and direct values to human systems.\n\nThe text traces the structural evolution from water-dependent bryophytes to vascular pteridophytes and advanced seed-producing gymnosperms.",
-                "Chapter 10: Cell Cycle and Cell Division": "This vital biological module looks closely at cell replication, tracking the precise chemical steps cells use to grow and divide safely.\n\nIt maps out the complete lifecycle of a cell, split into the long preparatory Interphase (G1, S, and G2 stages) and the active M-Phase distribution.\n\nMitosis is studied as equational division, detailing how Prophase, Metaphase, Anaphase, and Telophase safely separate chromosomes to help organisms grow and repair tissues.\n\nMeiosis is presented as reductional division, explaining how it cuts chromosome numbers in half to produce haploid gametes for sexual reproduction."
-            },
-            "Chemistry": {
-                "Chapter 1: Some Basic Concepts of Chemistry": "This essential structural chemistry chapter sets the fundamental mathematical rules used to process quantitative modern chemical research.\n\nIt reviews international tracking units, precision rules in lab measurements, scientific shorthand, and the foundational laws of chemical combinations.\n\nThe concept of the Mole is central to this text, defining Avogadro’s constant to bridge microscopic chemical properties with macroscopic weights.\n\nStudents learn analytical methods to calculate empirical and molecular formulas using raw percentage composition datasets from compounds.",
-                "Chapter 2: Structure of Atom": "This structural chemistry chapter tracks the historical scientific steps that led to our modern understanding of atomic layouts.\n\nIt starts with the discovery of subatomic items—electrons, protons, and neutrons—and analyzes why early models by Thomson and Rutherford fell short.\n\nIt introduces wave-particle dualities and Planck’s Quantum Theory to explain why energy acts in specific packets at small scales.\n\nBohr’s Hydrogen Model is evaluated, showing how locked electron tracks create clean emission line patterns when viewed through a spectroscope."
-            },
-            "Physics": {
-                "Chapter 2: Units and Measurements": "This introductory physics model details the international reference standards used to track physical properties accurately across modern science.\n\nIt separates baseline independent measurements (like mass, length, and time) from complex derived units used for values like force, power, or velocity.\n\nThe text looks at experimental accuracy and precision, explaining how systematic and random errors affect real-world measurement systems.\n\nSignificant figures are taught systematically to ensure that calculations preserve the true physical limits of testing equipment.",
-                "Chapter 3: Motion in a Straight Line": "This core kinematics module evaluates the straight-line movement of items without focusing on the physical forces that cause the action.\n\nIt defines essential coordinate terms: position shifts, total displacement vectors, overall path lengths, baseline velocity, and instantaneous acceleration.\n\nStudents use graphical systems, analyzing position-time ($x-t$) and velocity-time ($v-t$) charts to visualize changes in object speeds.\n\nIt derives the three classic kinematic equations of motion: $v = u + at$, $s = ut + \frac{1}{2}at^2$, and $v^2 = u^2 + 2as$ via calculus foundations."
-            },
-            "Maths": {
-                "Chapter 1: Sets": "This foundational math module introduces Set Theory, providing the universal logical language used across modern mathematical structures.\n\nA set is defined as a clearly organized group of unique objects, represented using either clear Roster list layouts or Set-Builder logic rules.\n\nIt covers different set styles, including empty groups, finite matrices, infinite values, equivalent equations, subsets, and universal data pools.\n\nStudents learn the four major operations: Universal Unions, tight Intersections, structural Differences, and the absolute Complement of a set.",
-                "Chapter 2: Relations and Functions": "Building directly on Set Theory, this module explores how specific mathematical items couple together using ordered pairs.\n\nIt starts with the Cartesian Product of two sets, defining a true Relation as any mathematical subset built from that product.\n\nStudents learn to calculate the Domain input sets, Co-domain targets, and real Range outputs that define any relation's limits.\n\nA Function is introduced as a specialized system where every single input maps to exactly one unique, distinct output value."
-            }
-        };
+    <main id="botanyPanel" style="display: none;" class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow grid grid-cols-1 md:grid-cols-12 gap-6">
+        <section class="md:col-span-4 bg-white p-5 rounded-2xl shadow border border-slate-100 h-fit space-y-3">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                <h3 class="font-bold text-xl text-emerald-900">🌿 Botany</h3>
+                <button onclick="showMainMenu()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-lg border font-semibold">← Back</button>
+            </div>
+            <div class="space-y-1 max-h-[450px] overflow-y-auto pr-1">
+                <button onclick="viewText('bot1', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 1: The Living World</button>
+                <button onclick="viewText('bot2', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 2: Biological Classification</button>
+                <button onclick="viewText('bot3', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 3: Plant Kingdom</button>
+                <button onclick="viewText('bot4', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 5: Morphology of Flowering Plants</button>
+                <button onclick="viewText('bot5', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 6: Anatomy of Flowering Plants</button>
+                <button onclick="viewText('bot6', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 8: Cell: Unit of Life</button>
+                <button onclick="viewText('bot7', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 9: Biomolecules</button>
+                <button onclick="viewText('bot8', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 10: Cell Cycle</button>
+                <button onclick="viewText('bot9', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 13: Photosynthesis</button>
+                <button onclick="viewText('bot10', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 14: Respiration in Plants</button>
+                <button onclick="viewText('bot11', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 15: Plant Growth</button>
+            </div>
+        </section>
+        <section class="md:col-span-8 bg-white p-6 rounded-2xl shadow border border-slate-100 min-h-[400px]">
+            <div id="bot-placeholder" class="h-full flex flex-col justify-center items-center text-slate-400 py-20"><p class="text-4xl">📑</p><p class="mt-2 text-sm">Select a Botany chapter to read summary</p></div>
+            <div id="bot1" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">The Living World</h2><p>This introductory module defines the unique architectural parameters of life, detailing biodiversity matrices and systematic taxonomic hierarchies.</p></div>
+            <div id="bot2" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Biological Classification</h2><p>This systematic chapter details Whittaker’s Five-Kingdom arrangement layout, analyzing Monera, Protista, Fungi, Plantae, and Animalia structures.</p></div>
+            <div id="bot3" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Plant Kingdom</h2><p>This foundational botany module covers plant classification, tracking the evolutionary steps from simple algae to complex flowering plants.</p></div>
+            <div id="bot4" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Morphology of Flowering Plants</h2><p>This dynamic structural chapter analyzes external variations across roots, shoots, leaves, compound flowers, seed fruits, and baseline vegetative matrices.</p></div>
+            <div id="bot5" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Anatomy of Flowering Plants</h2><p>This internal structural unit analyzes plant histology, separating primary meristems from permanent specialized protective and vascular tissue groupings.</p></div>
+            <div id="bot6" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Cell: The Unit of Life</h2><p>This cell biology module evaluates prokaryotic and eukaryotic structures, detailing cell walls, plasma interfaces, and specialized internal organelle hubs.</p></div>
+            <div id="bot7" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Biomolecules</h2><p>This biochemical chapter analyzes essential components like carbohydrates, lipophilic structures, structural proteins, and complex nucleic acid polymers.</p></div>
+            <div id="bot8" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Cell Cycle & Division</h2><p>This vital biological module looks closely at cell replication, tracking the preparatory Interphase and the dynamic mitotic and meiotic distribution paths.</p></div>
+            <div id="bot9" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Photosynthesis in Higher Plants</h2><p>This bioenergetic framework investigates light-harvesting pigment structures, cyclic photophosphorylation, and carbon tracking systems.</p></div>
+            <div id="bot10" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Respiration in Plants</h2><p>This cellular metabolism chapter tracks the breakdown of sugar elements across Glycolysis, aerobic Krebs cycles, and electron transport setups.</p></div>
+            <div id="bot11" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Plant Growth & Development</h2><p>This final botany curriculum unit outlines kinetic growth curves, photoperiodic transformations, vernalization processing, and plant growth regulators.</p></div>
+        </section>
+    </main>
 
-        let selectedSubjectName = "";
 
-        function openSubjectPage(subjectName) {
-            selectedSubjectName = subjectName;
-
-            // Strict Native Style display switching (100% reliable)
-            document.getElementById("subjectsPage").style.display = "none";
-            document.getElementById("chaptersPage").style.display = "grid";
-
-            document.getElementById("currentSubjectTitle").innerText = subjectName;
-            resetRightSummaryPanel();
-
-            const chapterContainerList = document.getElementById("chapterContainerList");
-            chapterContainerList.innerHTML = ""; 
-
-            const availableChapters = class11SyllabusDB[subjectName];
-            
-            // Loop and generate chapter elements cleanly
-            for (let chapTitle in availableChapters) {
-                const buttonItem = document.createElement("button");
-                buttonItem.type = "button";
-                buttonItem.className = "chap-list-btn w-full text-left bg-slate-50 hover:bg-slate-100 text-slate-700 text-sm font-medium p-3 rounded-xl border border-slate-200 block truncate cursor-pointer";
-                buttonItem.innerText = chapTitle;
-                
-                // Static listener generation to prevent memory loss loops
-                buttonItem.onclick = function() {
-                    showDocumentSummary(chapTitle, buttonItem);
-                };
-                
-                chapterContainerList.appendChild(buttonItem);
-            }
-        }
-
-        function showDocumentSummary(chapterTitle, domElement) {
-            // Un-highlight previous choices
-            const buttons = document.querySelectorAll('.chap-list-btn');
-            for(let i=0; i<buttons.length; i++) {
-                buttons[i].style.borderColor = "#e2e8f0";
-                buttons[i].style.backgroundColor = "#f8fafc";
-                buttons[i].style.color = "#334155";
-            }
-
-            // Inline color push to make sure it responds instantly
-            domElement.style.borderColor = "#4f46e5";
-            domElement.style.backgroundColor = "#f5f3ff";
-            domElement.style.color = "#4338ca";
-
-            document.getElementById("placeholderState").style.display = "none";
-            document.getElementById("contentState").style.display = "block";
-            document.getElementById("summaryCard").className = "bg-white h-full min-h-[500px] p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col";
-
-            document.getElementById("breadcrumbText").innerText = `Class 11th > ${selectedSubjectName}`;
-            document.getElementById("summaryTitle").innerText = chapterTitle;
-
-            const functionalDataText = class11SyllabusDB[selectedSubjectName][chapterTitle];
-            document.getElementById("summaryText").innerHTML = functionalDataText.split('\n\n').map(p => `<p class="text-justify leading-relaxed">${p}</p>`).join('');
-        }
-
-        function goBackToSubjects() {
-            document.getElementById("chaptersPage").style.display = "none";
-            document.getElementById("subjectsPage").style.display = "block";
-        }
-
-        function resetRightSummaryPanel() {
-            document.getElementById("placeholderState").style.display = "block";
-            document.getElementById("contentState").style.display = "none";
-            document.getElementById("summaryCard").className = "bg-white h-full min-h-[500px] p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-center items-center text-center";
-        }
-    </script>
-</body>
-</html>
+    <main id="chemistryPanel" style="display: none;" class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow grid grid-cols-1 md:grid-cols-12 gap-6">
+        <section class="md:col-span-4 bg-white p-5 rounded-2xl shadow border border-slate-100 h-fit space-y-3">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                <h3 class="font-bold text-xl text-teal-900">🧪 Chemistry</h3>
+                <button onclick="showMainMenu()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-lg border font-semibold">← Back</button>
+            </div>
+            <div class="space-y-1 max-h-[450px] overflow-y-auto pr-1">
+                <button onclick="viewText('chem1', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 1: Basic Concepts</button>
+                <button onclick="viewText('chem2', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 2: Structure of Atom</button>
+                <button onclick="viewText('chem3', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 3: Classification & Periodicity</button>
+                <button onclick="viewText('chem4', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 4: Chemical Bonding</button>
+                <button onclick="viewText('chem5', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 6: Thermodynamics</button>
+                <button onclick="viewText('chem6', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 7: Equilibrium</button>
+                <button onclick="viewText('chem7', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 8: Redox Reactions</button>
+                <button onclick="viewText('chem8', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 12: Organic Principles</button>
+                <button onclick="viewText('chem9', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 13: Hydrocarbons</button>
+            </div>
+        </section>
+        <section class="md:col-span-8 bg-white p-6 rounded-2xl shadow border border-slate-100 min-h-[400px]">
+            <div id="chem-placeholder" class="h-full flex flex-col justify-center items-center text-slate-400 py-20"><p class="text-4xl">📑</p><p class="mt-2 text-sm">Select a Chemistry chapter to read summary</p></div>
+            <div id="chem1" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Some Basic Concepts of Chemistry</h2><p>This introductory chapter sets the mathematical rules for chemical testing, tracking units, significant numbers, and compound combinations.</p></div>
+            <div id="chem2" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Structure of Atom</h2><p>This structural chemistry chapter traces atomic evolutions, detailing electronic setups, Bohr patterns, quantum numbers, and electron clouds.</p></div>
+            <div id="chem3" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Classification & Periodicity</h2><p>This module reviews modern periodic formatting configurations, shielding effects, and structural trends across physical and chemical behaviors.</p></div>
+            <div id="chem4" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Chemical Bonding</h2><p>This critical theoretical chapter evaluates chemical tracking models, Lewis layouts, VSEPR shapes, hybridization styles, and molecular orbital paths.</p></div>
+            <div id="chem5" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Chemical Thermodynamics</h2><p>This energetic layout maps system variations, separating isolated controls from enthalpy, entropy, internal energy transformations, and free energy variations
