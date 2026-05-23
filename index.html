@@ -3,152 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep's Library - Class 11th Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Naam Jap Counter</title>
+    <style>
+        /* Peaceful Spiritual Theme Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            color: #431407;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 450px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(120, 53, 4, 0.15);
+            border: 2px solid #fdba74;
+            text-align: center;
+            position: relative;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #9a3412;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        p {
+            color: #7c2d12;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        /* Selection Buttons */
+        .selection-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .btn-select {
+            background: #fff7ed;
+            color: #9a3412;
+            border: 2px solid #ea580c;
+            padding: 18px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-select:hover {
+            background: #ea580c;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+        }
+        /* Counter Screen Layout */
+        .selected-title {
+            font-size: 32px;
+            color: #ea580c;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .count-display {
+            font-size: 72px;
+            font-weight: bold;
+            color: #431407;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+        .btn-jap {
+            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+            color: white;
+            border: none;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(234, 88, 12, 0.3);
+            transition: all 0.1s ease;
+            user-select: none;
+        }
+        .btn-jap:active {
+            transform: scale(0.95);
+            box-shadow: 0 4px 10px rgba(234, 88, 12, 0.2);
+        }
+        /* Corner Buttons */
+        .btn-corner-left {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            color: #64748b;
+        }
+        .btn-corner-right {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #fef2f2;
+            border: 1px solid #fca5a5;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            color: #dc2626;
+        }
+        .btn-corner-left:hover { background: #e2e8f0; }
+        .btn-corner-right:hover { background: #fee2e2; }
+        
+        /* Stats Dashboard Section */
+        .stats-box {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px dashed #fed7aa;
+            text-align: left;
+        }
+        .stats-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #7c2d12;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            color: #431407;
+            padding: 4px 0;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between">
+<body>
 
-    <header class="bg-indigo-950 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-wide">📚 DEEP'S LIBRARY</h1>
-            <p class="text-indigo-200 text-xs italic">Class 11th NCERT Portal</p>
+    <div id="selectionScreen" class="card">
+        <h1>Naam Jap Counter</h1>
+        <p>Kripya naam chuniye jiska aap jap karna chahte hain:</p>
+        <div class="selection-box">
+            <button onclick="startJap('Shri Ram')" class="btn-select">🏹 Shri Ram</button>
+            <button onclick="startJap('Shri Radha')" class="btn-select">🪕 Shri Radha</button>
         </div>
-    </header>
+        
+        <div class="stats-box" style="margin-top: 35px;">
+            <div class="stats-title">Aapka Kul Kul Jap (Saved)</div>
+            <div class="stats-row"><span>Total Ram Jap:</span> <span id="homeRamCount" style="font-weight:bold;">0</span></div>
+            <div class="stats-row"><span>Total Radha Jap:</span> <span id="homeRadhaCount" style="font-weight:bold;">0</span></div>
+        </div>
+    </div>
 
-    <main id="subjectsMenu" class="max-w-3xl w-full mx-auto px-4 py-12 flex-grow flex flex-col justify-center">
-        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 space-y-6">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold text-slate-800">Select a Subject</h2>
-                <p class="text-slate-400 text-sm mt-1">Click on any subject to open its static chapter panel</p>
-            </div>
+    <div id="counterScreen" class="card" style="display: none;">
+        <button onclick="goBack()" class="btn-corner-left">← Change</button>
+        <button onclick="resetCurrentCounter()" class="btn-corner-right">Reset 🔄</button>
+        
+        <div style="margin-top: 20px;">
+            <div id="selectedNaamDisplay" class="selected-title">Naam</div>
+            <div class="count-display" id="mainCounter">0</div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button onclick="showPanel('zoologyPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
-                    <span class="text-2xl">🦁</span>
-                    <h3 class="font-bold text-lg mt-2">Zoology</h3>
-                    <p class="text-xs text-slate-400 mt-1">Animal Kingdom & Human Physiology</p>
-                </button>
-
-                <button onclick="showPanel('botanyPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
-                    <span class="text-2xl">🌿</span>
-                    <h3 class="font-bold text-lg mt-2">Botany</h3>
-                    <p class="text-xs text-slate-400 mt-1">Plant Systems & Cell Biology</p>
-                </button>
-
-                <button onclick="showPanel('chemistryPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
-                    <span class="text-2xl">🧪</span>
-                    <h3 class="font-bold text-lg mt-2">Chemistry</h3>
-                    <p class="text-xs text-slate-400 mt-1">Organic, Inorganic & Physical Principles</p>
-                </button>
-
-                <button onclick="showPanel('physicsPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full">
-                    <span class="text-2xl">🌌</span>
-                    <h3 class="font-bold text-lg mt-2">Physics</h3>
-                    <p class="text-xs text-slate-400 mt-1">Mechanics, Matter & Thermodynamics</p>
-                </button>
-
-                <button onclick="showPanel('mathsPanel')" class="p-5 bg-slate-50 hover:bg-indigo-600 hover:text-white text-left rounded-xl border border-slate-200 transition-all cursor-pointer block w-full md:col-span-2 flex items-center justify-between">
-                    <div>
-                        <h3 class="font-bold text-lg">📐 Mathematics</h3>
-                        <p class="text-xs text-slate-400 mt-1">Calculus, Algebra & Geometry</p>
-                    </div>
-                    <span class="text-xl">→</span>
-                </button>
-            </div>
+            <button onclick="incrementCounter()" class="btn-jap" id="japActionBtn">JAP</button>
         </div>
-    </main>
 
+        <div class="stats-box">
+            <div class="stats-title">Live Saving Dashboard</div>
+            <div class="stats-row"><span id="lblRam">Total Ram Jap:</span> <span id="statRamCount" style="font-weight:bold;">0</span></div>
+            <div class="stats-row"><span id="lblRadha">Total Radha Jap:</span> <span id="statRadhaCount" style="font-weight:bold;">0</span></div>
+        </div>
+    </div>
 
-    <main id="zoologyPanel" style="display: none;" class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow grid grid-cols-1 md:grid-cols-12 gap-6">
-        <section class="md:col-span-4 bg-white p-5 rounded-2xl shadow border border-slate-100 h-fit space-y-3">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-xl text-indigo-900">🦁 Zoology</h3>
-                <button onclick="showMainMenu()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-lg border font-semibold">← Back</button>
-            </div>
-            <div class="space-y-1 max-h-[450px] overflow-y-auto pr-1">
-                <button onclick="viewText('zoo1', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 4: Animal Kingdom</button>
-                <button onclick="viewText('zoo2', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 7: Structural Organisation in Animals</button>
-                <button onclick="viewText('zoo3', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 17: Breathing & Exchange of Gases</button>
-                <button onclick="viewText('zoo4', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 18: Body Fluids & Circulation</button>
-                <button onclick="viewText('zoo5', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 19: Excretory Products</button>
-                <button onclick="viewText('zoo6', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 20: Locomotion & Movement</button>
-                <button onclick="viewText('zoo7', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 21: Neural Control</button>
-                <button onclick="viewText('zoo8', this)" class="zoo-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 22: Chemical Coordination</button>
-            </div>
-        </section>
-        <section class="md:col-span-8 bg-white p-6 rounded-2xl shadow border border-slate-100 min-h-[400px]">
-            <div id="zoo-placeholder" class="h-full flex flex-col justify-center items-center text-slate-400 py-20"><p class="text-4xl">📑</p><p class="mt-2 text-sm">Select a Zoology chapter to read summary</p></div>
-            <div id="zoo1" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Animal Kingdom</h2><p>This comprehensive zoology module classifies the animal kingdom based on evolutionary features, architectural symmetry, coelom configurations, and tissue-level organization parameters.</p><p>Students systematically study eleven distinct phyla, moving carefully from primitive Porifera up through highly organized Chordates.</p></div>
-            <div id="zoo2" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Structural Organisation</h2><p>This specialized cytological and anatomical chapter reviews complex animal tissues, looking closely at their layouts, micro-structures, and physiological roles.</p><p>It isolates the four fundamental structural tissue classifications: Epithelial protective sheets, specialized Connective matrices, Muscular movement units, and Neural networks.</p></div>
-            <div id="zoo3" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Breathing and Exchange of Gases</h2><p>This chapter covers the respiratory structures across diverse biological groups, detailing the specialized mechanics of pulmonary respiration in humans.</p></div>
-            <div id="zoo4" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Body Fluids and Circulation</h2><p>This core curriculum unit focuses on cardiovascular systems, mapping out blood elements, plasma fluids, lymph structures, and the complete mechanics of the human heart.</p></div>
-            <div id="zoo5" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Excretory Products & Elimination</h2><p>This chapter evaluates renal systems, detailing human nephron layouts, counter-current concentration multipliers, and homeostatic fluid balances.</p></div>
-            <div id="zoo6" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Locomotion and Movement</h2><p>This analytical section explains mechanical skeletal muscle operations alongside the comprehensive structural anatomy of human bones and skeletal alignments.</p></div>
-            <div id="zoo7" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Neural Control & Coordination</h2><p>This module reviews neurological frameworks, detailing central nervous configurations, reflex arcs, neural impulse creation, and synaptic transmission bridges.</p></div>
-            <div id="zoo8" class="zoo-txt hidden space-y-3 text-justify"><h2 class="text-xl font-bold border-b pb-2 text-indigo-950">Chemical Coordination</h2><p>This final zoology unit evaluates endocrine systems, detailing hormone production hubs, target feedback signaling loops, and metabolic control paths.</p></div>
-        </section>
-    </main>
+    <script>
+        // Core state tracker
+        let activeNaam = "";
+        
+        // Load counts dynamically from browser localStorage on startup
+        let ramTotalData = parseInt(localStorage.getItem('ramCounter')) || 0;
+        let radhaTotalData = parseInt(localStorage.getItem('radhaCounter')) || 0;
 
+        // Initialize display values immediately
+        refreshUI();
 
-    <main id="botanyPanel" style="display: none;" class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow grid grid-cols-1 md:grid-cols-12 gap-6">
-        <section class="md:col-span-4 bg-white p-5 rounded-2xl shadow border border-slate-100 h-fit space-y-3">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-xl text-emerald-900">🌿 Botany</h3>
-                <button onclick="showMainMenu()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-lg border font-semibold">← Back</button>
-            </div>
-            <div class="space-y-1 max-h-[450px] overflow-y-auto pr-1">
-                <button onclick="viewText('bot1', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 1: The Living World</button>
-                <button onclick="viewText('bot2', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 2: Biological Classification</button>
-                <button onclick="viewText('bot3', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 3: Plant Kingdom</button>
-                <button onclick="viewText('bot4', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 5: Morphology of Flowering Plants</button>
-                <button onclick="viewText('bot5', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 6: Anatomy of Flowering Plants</button>
-                <button onclick="viewText('bot6', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 8: Cell: Unit of Life</button>
-                <button onclick="viewText('bot7', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 9: Biomolecules</button>
-                <button onclick="viewText('bot8', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 10: Cell Cycle</button>
-                <button onclick="viewText('bot9', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 13: Photosynthesis</button>
-                <button onclick="viewText('bot10', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 14: Respiration in Plants</button>
-                <button onclick="viewText('bot11', this)" class="bot-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 15: Plant Growth</button>
-            </div>
-        </section>
-        <section class="md:col-span-8 bg-white p-6 rounded-2xl shadow border border-slate-100 min-h-[400px]">
-            <div id="bot-placeholder" class="h-full flex flex-col justify-center items-center text-slate-400 py-20"><p class="text-4xl">📑</p><p class="mt-2 text-sm">Select a Botany chapter to read summary</p></div>
-            <div id="bot1" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">The Living World</h2><p>This introductory module defines the unique architectural parameters of life, detailing biodiversity matrices and systematic taxonomic hierarchies.</p></div>
-            <div id="bot2" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Biological Classification</h2><p>This systematic chapter details Whittaker’s Five-Kingdom arrangement layout, analyzing Monera, Protista, Fungi, Plantae, and Animalia structures.</p></div>
-            <div id="bot3" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Plant Kingdom</h2><p>This foundational botany module covers plant classification, tracking the evolutionary steps from simple algae to complex flowering plants.</p></div>
-            <div id="bot4" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Morphology of Flowering Plants</h2><p>This dynamic structural chapter analyzes external variations across roots, shoots, leaves, compound flowers, seed fruits, and baseline vegetative matrices.</p></div>
-            <div id="bot5" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Anatomy of Flowering Plants</h2><p>This internal structural unit analyzes plant histology, separating primary meristems from permanent specialized protective and vascular tissue groupings.</p></div>
-            <div id="bot6" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Cell: The Unit of Life</h2><p>This cell biology module evaluates prokaryotic and eukaryotic structures, detailing cell walls, plasma interfaces, and specialized internal organelle hubs.</p></div>
-            <div id="bot7" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Biomolecules</h2><p>This biochemical chapter analyzes essential components like carbohydrates, lipophilic structures, structural proteins, and complex nucleic acid polymers.</p></div>
-            <div id="bot8" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Cell Cycle & Division</h2><p>This vital biological module looks closely at cell replication, tracking the preparatory Interphase and the dynamic mitotic and meiotic distribution paths.</p></div>
-            <div id="bot9" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Photosynthesis in Higher Plants</h2><p>This bioenergetic framework investigates light-harvesting pigment structures, cyclic photophosphorylation, and carbon tracking systems.</p></div>
-            <div id="bot10" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Respiration in Plants</h2><p>This cellular metabolism chapter tracks the breakdown of sugar elements across Glycolysis, aerobic Krebs cycles, and electron transport setups.</p></div>
-            <div id="bot11" class="bot-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-emerald-950">Plant Growth & Development</h2><p>This final botany curriculum unit outlines kinetic growth curves, photoperiodic transformations, vernalization processing, and plant growth regulators.</p></div>
-        </section>
-    </main>
+        function startJap(naam) {
+            activeNaam = naam;
+            
+            // Toggle screen screens smoothly
+            document.getElementById("selectionScreen").style.display = "none";
+            document.getElementById("counterScreen").style.display = "block";
+            
+            // Set contextual labels
+            document.getElementById("selectedNaamDisplay").innerText = naam;
+            document.getElementById("japActionBtn").innerText = naam === "Shri Ram" ? "RAM" : "RADHA";
+            
+            // Set current session view counter
+            updateCounterDisplay();
+        }
 
+        function incrementCounter() {
+            if (activeNaam === "Shri Ram") {
+                ramTotalData++;
+                localStorage.setItem('ramCounter', ramTotalData);
+            } else if (activeNaam === "Shri Radha") {
+                radhaTotalData++;
+                localStorage.setItem('radhaCounter', radhaTotalData);
+            }
+            
+            // Update counts instantly
+            updateCounterDisplay();
+            refreshUI();
+        }
 
-    <main id="chemistryPanel" style="display: none;" class="max-w-6xl w-full mx-auto px-4 py-8 flex-grow grid grid-cols-1 md:grid-cols-12 gap-6">
-        <section class="md:col-span-4 bg-white p-5 rounded-2xl shadow border border-slate-100 h-fit space-y-3">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h3 class="font-bold text-xl text-teal-900">🧪 Chemistry</h3>
-                <button onclick="showMainMenu()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1 rounded-lg border font-semibold">← Back</button>
-            </div>
-            <div class="space-y-1 max-h-[450px] overflow-y-auto pr-1">
-                <button onclick="viewText('chem1', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 1: Basic Concepts</button>
-                <button onclick="viewText('chem2', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 2: Structure of Atom</button>
-                <button onclick="viewText('chem3', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 3: Classification & Periodicity</button>
-                <button onclick="viewText('chem4', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 4: Chemical Bonding</button>
-                <button onclick="viewText('chem5', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 6: Thermodynamics</button>
-                <button onclick="viewText('chem6', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 7: Equilibrium</button>
-                <button onclick="viewText('chem7', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 8: Redox Reactions</button>
-                <button onclick="viewText('chem8', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 12: Organic Principles</button>
-                <button onclick="viewText('chem9', this)" class="chem-btn w-full text-left p-3 rounded-xl border text-sm bg-slate-50 font-medium">Chapter 13: Hydrocarbons</button>
-            </div>
-        </section>
-        <section class="md:col-span-8 bg-white p-6 rounded-2xl shadow border border-slate-100 min-h-[400px]">
-            <div id="chem-placeholder" class="h-full flex flex-col justify-center items-center text-slate-400 py-20"><p class="text-4xl">📑</p><p class="mt-2 text-sm">Select a Chemistry chapter to read summary</p></div>
-            <div id="chem1" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Some Basic Concepts of Chemistry</h2><p>This introductory chapter sets the mathematical rules for chemical testing, tracking units, significant numbers, and compound combinations.</p></div>
-            <div id="chem2" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Structure of Atom</h2><p>This structural chemistry chapter traces atomic evolutions, detailing electronic setups, Bohr patterns, quantum numbers, and electron clouds.</p></div>
-            <div id="chem3" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Classification & Periodicity</h2><p>This module reviews modern periodic formatting configurations, shielding effects, and structural trends across physical and chemical behaviors.</p></div>
-            <div id="chem4" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Chemical Bonding</h2><p>This critical theoretical chapter evaluates chemical tracking models, Lewis layouts, VSEPR shapes, hybridization styles, and molecular orbital paths.</p></div>
-            <div id="chem5" class="chem-txt hidden space-y-3"><h2 class="text-xl font-bold border-b pb-2 text-teal-950">Chemical Thermodynamics</h2><p>This energetic layout maps system variations, separating isolated controls from enthalpy, entropy, internal energy transformations, and free energy variations
+        function updateCounterDisplay() {
+            // Show corresponding numeric data based on active selection
+            if (activeNaam === "Shri Ram") {
+                document.getElementById("mainCounter").innerText = ramTotalData;
+            } else {
+                document.getElementById("mainCounter").innerText = radhaTotalData;
+            }
+        }
+
+        function resetCurrentCounter() {
+            // Confirmation alert before clearing data
+            let confirmClear = confirm("Kya aap " + activeNaam + " ka counter zero (0) karna chahte hain?");
+            if (confirmClear) {
+                if (activeNaam === "Shri Ram") {
+                    ramTotalData = 0;
+                    localStorage.setItem('ramCounter', 0);
+                } else {
+                    radhaTotalData = 0;
+                    localStorage.setItem('radhaCounter', 0);
+                }
+                updateCounterDisplay();
+                refreshUI();
+            }
+        }
+
+        function refreshUI() {
+            // Update display logs everywhere across screens
+            document.getElementById("homeRamCount").innerText = ramTotalData;
+            document.getElementById("homeRadhaCount").innerText = radhaTotalData;
+            document.getElementById("statRamCount").innerText = ramTotalData;
+            document.getElementById("statRadhaCount").innerText = radhaTotalData;
+        }
+
+        function goBack() {
+            // Return to home selection interface cleanly
+            document.getElementById("counterScreen").style.display = "none";
+            document.getElementById("selectionScreen").style.display = "block";
+        }
+    </script>
+</body>
+</html>
